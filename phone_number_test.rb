@@ -18,33 +18,44 @@ class PhoneNumberTest < MiniTest::Unit::TestCase
   end
 
   def test_display_number
+    skip
     p_number = PhoneNumber.new('1234567890')
     assert_equal('(123) 456-7890', p_number.to_s)
   end
 
   def test_contains_nonnumeric
+    skip
     p_number = PhoneNumber.new('123456789A')
-    assert_equal(nil, p_number.nonnumeric?)
+    assert_equal(nil, p_number.number)
   end
 
   def test_contains_10_digits
+    skip
     p_number = PhoneNumber.new('1234567890')
-    assert_equal(true, p_number.is_valid?)
+    assert_equal('1234567890', p_number.number)
   end
 
-  def test_contains_11_digits
+  def test_valid_11_digits
+    skip
     p_number = PhoneNumber.new('11234567890')
-    assert_equal('1234567890', p_number.strip_first_digit)
+    assert_equal('1234567890', p_number.number)
+  end
+
+  def test_invalid_11_digits
+    skip
+    p_number = PhoneNumber.new('21234567890')
+    assert_equal(nil, p_number.number)
   end
 
   def test_greater_than_11
+    skip
     p_number = PhoneNumber.new('111234567890')
-    assert_equal(nil, p_number.is_valid?)
+    assert_equal(nil, p_number.number)
   end
 
   def test_less_than_10
+    skip
     p_number = PhoneNumber.new('1234')
-    assert_equal(nil, p_number.is_valid?)
+    assert_equal(nil, p_number.number)
   end
-
 end

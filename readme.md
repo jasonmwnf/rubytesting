@@ -8,3 +8,5 @@ Your todo: think about the above requirement, and write out more specific requir
 - If phone number is 11 digit numberic, strip the 1. If it doesn't start with 1, return nil.
 - If phone number is greater than 11 digits, return nil. 
 - If phone number is less than 10 digits, return nil. 
+
+use 'skip' keyword to run one test at a time. 
