@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require_relative 'phone_number'
 
-class PhoneNumberTest , MiniTest::Unit::TestCase
+class PhoneNumberTest < MiniTest::Unit::TestCase
   def setup; end
 
   # def test_method_1
@@ -21,4 +21,30 @@ class PhoneNumberTest , MiniTest::Unit::TestCase
     p_number = PhoneNumber.new('1234567890')
     assert_equal('(123) 456-7890', p_number.to_s)
   end
+
+  def test_contains_nonnumeric
+    p_number = PhoneNumber.new('123456789A')
+    assert_equal(nil, p_number.nonnumeric?)
+  end
+
+  def test_contains_10_digits
+    p_number = PhoneNumber.new('1234567890')
+    assert_equal(true, p_number.is_valid?)
+  end
+
+  def test_contains_11_digits
+    p_number = PhoneNumber.new('11234567890')
+    assert_equal('1234567890', p_number.strip_first_digit)
+  end
+
+  def test_greater_than_11
+    p_number = PhoneNumber.new('111234567890')
+    assert_equal(nil, p_number.is_valid?)
+  end
+
+  def test_less_than_10
+    p_number = PhoneNumber.new('1234')
+    assert_equal(nil, p_number.is_valid?)
+  end
+
 end
