@@ -58,4 +58,10 @@ class PhoneNumberTest < MiniTest::Unit::TestCase
     p_number = PhoneNumber.new('1234')
     assert_equal(nil, p_number.number)
   end
+
+  def test_area_code
+    skip
+    p_number = PhoneNumber.new('(123) 456-7890')
+    assert_equal('123', p_number.area_code)
+  end
 end
